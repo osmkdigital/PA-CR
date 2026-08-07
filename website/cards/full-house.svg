@@ -1,0 +1,10 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <g font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e9c976">
+    <text x="55" y="85">K</text><text x="110" y="85">K</text><text x="165" y="85">K</text>
+  </g>
+  <g font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e8283f">
+    <text x="90" y="140">4</text><text x="150" y="140">4</text>
+  </g>
+  <text x="150" y="180" text-anchor="middle" font-family="monospace" font-size="16" fill="#cda349">FULL HOUSE</text>
+</svg>

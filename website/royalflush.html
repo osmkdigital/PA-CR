@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Flush — Game &amp; Coin</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar-scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-link">
+        <img src="logo.png" alt="Royal Flush logo" class="brand-logo">
+        <div class="name">Royal Flush<span>LOTTERY &amp; GAMES</span></div>
+      </a>
+      <button class="sidebar-close js-sidebar-close">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">♠</span> Home</a>
+      <a href="tickets.html"><span class="ic">♥</span> Tickets</a>
+      <a href="draw.html"><span class="ic">♣</span> Draw</a>
+      <a href="royalflush.html" class="active"><span class="ic">♦</span> Royal Flush</a>
+      <a href="profile.html"><span class="ic">☺</span> My Profile</a>
+      <a href="admin.html" class="js-admin-nav-link" style="display:none;"><span class="ic">⚙</span> Admin</a>
+    </nav>
+    <div class="sidebar-foot">NEXT DRAW <b>DAILY · 3:00 PM</b><br>Play responsibly. 18+</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle js-sidebar-open">☰</button>
+        <span class="page-tag">Royal Flush</span>
+      </div>
+      <div class="topbar-right">
+        <a href="cart.html" class="icon-btn" title="Cart">
+          <svg class="bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8h12l-1.1 12.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 8z"/>
+            <path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>
+          </svg>
+          <span class="badge js-cart-badge">0</span>
+        </a>
+        <div class="wrap-relative">
+          <button class="auth-btn js-auth-btn js-auth-open is-guest"><span class="avatar">♣</span><span class="au-label">Login / Sign Up</span></button>
+          <div class="profile-pop js-profile-pop"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="section-head" style="margin-bottom:6px;">
+        <div><span class="eyebrow">The Game</span><h2>How Royal Flush works</h2></div>
+      </div>
+      <p style="max-width:640px;">Every ticket is dealt a five-card hand behind the scenes. When the clock hits 3:00 PM, hands are revealed in order — the strongest hand left standing takes the pot, ranked exactly like standard poker hand rankings, top to bottom.</p>
+
+      <div class="card-grid" style="margin-top:26px;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));">
+        <div class="result-card"><div class="date">RANK 01</div><div class="num" style="font-size:1.3rem;">Royal Flush</div><div class="win">A, K, Q, J, 10 — one suit. The top prize, the namesake hand.</div></div>
+        <div class="result-card"><div class="date">RANK 02</div><div class="num" style="font-size:1.3rem;">Straight Flush</div><div class="win">Five in a row, one suit.</div></div>
+        <div class="result-card"><div class="date">RANK 03</div><div class="num" style="font-size:1.3rem;">Four of a Kind</div><div class="win">Four matching ranks.</div></div>
+        <div class="result-card"><div class="date">RANK 04</div><div class="num" style="font-size:1.3rem;">Full House</div><div class="win">Three of a kind plus a pair.</div></div>
+      </div>
+
+      <div class="divider-suit"><span>♠ ♥ ♣ ♦</span></div>
+
+      <!-- TRUST POSTER -->
+      <section class="poster-banner" style="margin-top:0;">
+        <div class="poster-frame">
+          <span class="poster-eyebrow">♠ ♥ ♣ ♦ ROYAL FLUSH TOKEN ♦ ♣ ♥ ♠</span>
+          <h2 class="poster-title" style="font-size:2.6rem;">Built to be <em>checked</em>,<br>not just believed.</h2>
+          <p class="poster-sub">RF is the house token behind Royal Flush. Here's what's meant to back it as the project moves toward full public launch — check it yourself once it's live.</p>
+          <div class="poster-stats">
+            <div><b>Fixed</b><span>Capped Supply</span></div>
+            <div><b>On-chain</b><span>Verifiable</span></div>
+            <div><b>Public</b><span>Roadmap</span></div>
+            <div><b>Community</b><span>Governed</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TRUST SLIDER -->
+      <section class="slider" style="margin-top:26px;">
+        <div class="slider-track">
+          <div class="slide" style="min-height:220px; padding:44px 56px;">
+            <span class="eyebrow">Transparency</span>
+            <h1 style="font-size:1.6rem;">Every number, out in the open.</h1>
+            <p>Supply, circulating balance, and the treasury wallet are all meant to be publicly viewable on-chain — no hidden minting, no off-book allocations.</p>
+          </div>
+          <div class="slide" style="min-height:220px; padding:44px 56px;">
+            <span class="eyebrow">Security</span>
+            <h1 style="font-size:1.6rem;">Audit before mainnet.</h1>
+            <p>A third-party smart-contract audit is planned ahead of public launch, with the report published here as soon as it's complete.</p>
+          </div>
+          <div class="slide" style="min-height:220px; padding:44px 56px;">
+            <span class="eyebrow">Fair Distribution</span>
+            <h1 style="font-size:1.6rem;">Earned by playing, not bought in bulk.</h1>
+            <p>The airdrop below rewards active players over time — there's no private presale round designed to let early holders dump on newcomers.</p>
+          </div>
+          <div class="slide" style="min-height:220px; padding:44px 56px;">
+            <span class="eyebrow">Community</span>
+            <h1 style="font-size:1.6rem;">Holders help shape what's next.</h1>
+            <p>Future draw formats and platform changes are put to a holder vote — RF is meant to be a say at the table, not just a chip on it.</p>
+          </div>
+        </div>
+        <div class="slider-dots"></div>
+        <div class="slider-arrows"><button class="js-prev">‹</button><button class="js-next">›</button></div>
+      </section>
+
+      <!-- TOKEN SECTION -->
+      <div class="token-hero" style="margin-top:60px;">
+        <div>
+          <span class="eyebrow">House Token</span>
+          <h2>Royal Flush Token (RF)</h2>
+          <p>RF is the utility token for the platform — hold it for fee discounts on ticket purchases, early access to new draw formats, and eligibility for the ongoing airdrop below.</p>
+          <div class="chain-badge"><span class="dot"></span> Listed on BNB Chain (BEP-20)</div>
+          <div class="token-stats">
+            <div><div class="v">RF</div><div class="k">Ticker</div></div>
+            <div><div class="v">BEP-20</div><div class="k">Token Standard</div></div>
+            <div><div class="v">100,000,000</div><div class="k">Total Supply</div></div>
+            <div><div class="v">Sample Only</div><div class="k">Contract Address</div></div>
+          </div>
+          <p style="margin-top:18px;font-size:.78rem;">This page is a design template — token figures, the contract address, and audit status shown here are placeholders and should be replaced with your real, audited details before launch.</p>
+        </div>
+        <div class="token-card">
+          <div class="token-chip"><span>RF</span></div>
+          <h3 style="color:#fff;">Why hold RF?</h3>
+          <p style="margin-bottom:0;">Fee discounts on every ticket · Priority seating on high-value draws · Airdrop eligibility · Governance votes on future game modes</p>
+        </div>
+      </div>
+
+      <!-- AIRDROP -->
+      <div class="airdrop-banner">
+        <span class="eyebrow">Limited Promotion</span>
+        <h2>RF Airdrop is live</h2>
+        <p style="max-width:520px;margin:10px auto 0;">Active players are earning RF just for participating in daily draws. Here's how to qualify.</p>
+        <div class="airdrop-steps">
+          <div class="as"><div class="suit-big suit gold">♠</div><h4 style="color:#fff;font-size:1rem;">Create an account</h4><p style="margin:0;font-size:.85rem;">Sign up and connect a BNB Chain wallet to your profile.</p></div>
+          <div class="as"><div class="suit-big suit gold">♥</div><h4 style="color:#fff;font-size:1rem;">Buy any ticket</h4><p style="margin:0;font-size:.85rem;">One qualifying ticket purchase per draw counts toward your allocation.</p></div>
+          <div class="as"><div class="suit-big suit gold">♣</div><h4 style="color:#fff;font-size:1rem;">Stay active</h4><p style="margin:0;font-size:.85rem;">Allocations scale with how many draws you've entered this month.</p></div>
+          <div class="as"><div class="suit-big suit gold">♦</div><h4 style="color:#fff;font-size:1rem;">Claim RF</h4><p style="margin:0;font-size:.85rem;">Claim windows open monthly from your profile once the round closes.</p></div>
+        </div>
+        <a href="tickets.html" class="btn btn-gold" style="margin-top:30px;">Buy a Ticket to Qualify</a>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="fb-mark">
+              <img src="logo.png" alt="Royal Flush logo" class="footer-logo">
+              <span>Royal Flush</span>
+            </a>
+            <p>A daily-draw lottery table with transparent odds, live results, and USDT/USDC payouts. Play the hand, not the house.</p>
+            <div class="footer-social">
+              <a href="https://x.com/royalflush2050?s=11 " target="_blank" aria-label="X / Twitter" title="X / Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+              </a>
+              <a href="https://t.me/royalflush2050 " target="_blank" aria-label="Telegram" title="Telegram">
+                <svg viewBox="0 0 24 24"><path d="M21.8 4.2 2.7 11.6c-1.3.5-1.3 1.2-.2 1.6l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.8-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1-1.5zM8.8 14.4l9.5-6c.4-.3.8-.1.5.2l-8 7.3-.3 3.1-1.4-4.6z"/></svg>
+              </a>
+              <a href="#" aria-label="Discord" title="Discord">
+                <svg viewBox="0 0 24 24"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4l-.3.5c1.7.4 2.6 1 3.5 1.7-1.5-.7-3-1.3-5.1-1.3s-3.6.6-5.1 1.3c.9-.7 1.9-1.4 3.5-1.7L12.1 4a17.6 17.6 0 0 0-4.4 1.4C4.9 9.1 4 12.7 4.3 16.2a17.7 17.7 0 0 0 5.1 2.5l.7-1.1c-.8-.3-1.6-.7-2.3-1.2l.5-.4c2.9 1.3 6 1.3 8.9 0l.5.4c-.7.5-1.5.9-2.3 1.2l.7 1.1a17.7 17.7 0 0 0 5.1-2.5c.4-4-.6-7.5-1.9-10.8zM9.7 14.1c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7zm4.6 0c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4 .1 1 0 1.7.2 2.1.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.4 1.1.4 2.1.1 1 .1 1.3.1 4s0 3-.1 4c0 1-.2 1.7-.4 2.1-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1.1.4-2.1.4-1 .1-1.3.1-4 .1s-3 0-4-.1c-1 0-1.7-.2-2.1-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.4-1.1-.4-2.1-.1-1-.1-1.3-.1-4s0-3 .1-4c0-1 .2-1.7.4-2.1.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1.1-.4 2.1-.4 1-.1 1.3-.1 4-.1zm0 1.8c-2.6 0-2.9 0-4 .1-.8 0-1.2.2-1.5.3-.4.1-.6.3-.9.6-.3.3-.4.5-.6.9-.1.3-.3.7-.3 1.5-.1 1.1-.1 1.4-.1 4s0 2.9.1 4c0 .8.2 1.2.3 1.5.1.4.3.6.6.9.3.3.5.4.9.6.3.1.7.3 1.5.3 1.1.1 1.4.1 4 .1s2.9 0 4-.1c.8 0 1.2-.2 1.5-.3.4-.1.6-.3.9-.6.3-.3.4-.5.6-.9.1-.3.3-.7.3-1.5.1-1.1.1-1.4.1-4s0-2.9-.1-4c0-.8-.2-1.2-.3-1.5-.1-.4-.3-.6-.6-.9-.3-.3-.5-.4-.9-.6-.3-.1-.7-.3-1.5-.3-1.1-.1-1.4-.1-4-.1zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.7-2a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M22 12s0-3.1-.4-4.6a3 3 0 0 0-2.1-2.1C17.9 5 12 5 12 5s-5.9 0-7.5.3A3 3 0 0 0 2.4 7.4C2 8.9 2 12 2 12s0 3.1.4 4.6a3 3 0 0 0 2.1 2.1C6.1 19 12 19 12 19s5.9 0 7.5-.3a3 3 0 0 0 2.1-2.1c.4-1.5.4-4.6.4-4.6zM9.9 15.3V8.7l6 3.3-6 3.3z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-cols">
+            <div class="footer-col">
+              <b>Play</b>
+              <a href="index.html">Home</a>
+              <a href="tickets.html">Tickets</a>
+              <a href="draw.html">Today's Draw</a>
+              <a href="royalflush.html">Royal Flush</a>
+              <a href="cart.html">Your Bag</a>
+              <a href="checkout.html">Checkout</a>
+            </div>
+            <div class="footer-col">
+              <b>Support</b>
+              <a href="help-center.html">Help Center</a>
+              <a href="faqs.html">FAQs</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="live-chat.html">Live Chat</a>
+              <a href="report-issue.html">Report an Issue</a>
+              <a href="responsible-play.html">Responsible Play</a>
+            </div>
+            <div class="footer-col">
+              <b>Company</b>
+              <a href="about.html">About Us</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="careers.html">Careers</a>
+              <a href="press.html">Press &amp; Media</a>
+              <a href="blog.html">Blog</a>
+              <a href="affiliates.html">Affiliate Program</a>
+            </div>
+            <div class="footer-col">
+              <b>Legal</b>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="cookies.html">Cookie Policy</a>
+              <a href="aml.html">AML Policy</a>
+              <a href="refunds.html">Refund Policy</a>
+              <a href="age-verification.html">Age Verification</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-disclaimer">Royal Flush is a demo storefront. All draws, balances, token figures, and payments shown here are simulated for design purposes. 18+ only where lottery-style games are legal. Nothing on this site is financial advice.</p>
+
+        <div class="footer-bottom">
+          <p>&copy; Royal Flush 2026. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="cookies.html">Cookies</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal-box">
+    <button class="close-x js-modal-close">✕</button>
+    <div class="modal-tabs js-modal-tabs">
+      <button class="active" data-tab="login">Login</button>
+      <button data-tab="signup">Sign Up</button>
+    </div>
+    <div class="auth-panel" data-panel="login" style="display:block;">
+      <form id="login-form">
+        <div class="field"><label>Email</label><input type="email" id="login-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="login-password" required placeholder="••••••••"></div>
+        <button class="btn btn-primary btn-block" type="submit">Enter the Table</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-forgot-link">Forgot password?</a></p>
+    </div>
+    <div class="auth-panel" data-panel="signup" style="display:none;">
+      <form id="signup-form">
+        <div class="field"><label>Full Name</label><input type="text" id="signup-name" required placeholder="Alex Rivera"></div>
+        <div class="field"><label>Date of Birth</label><input type="date" id="signup-dob" required></div>
+        <div class="field"><label>Email</label><input type="email" id="signup-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="signup-password" required placeholder="Create a password" minlength="6"></div>
+        <label class="check-field">
+          <input type="checkbox" id="signup-age-confirm" required>
+          <span>I confirm I am 18 years of age or older and eligible to play lottery-style games in my region.</span>
+        </label>
+        <p class="form-error" id="signup-error">You must be 18 or older to create an account.</p>
+        <button class="btn btn-gold btn-block" type="submit">Create Account</button>
+      </form>
+      <p class="form-note">By joining you confirm you meet the legal age for lottery-style games in your region.</p>
+    </div>
+    <div class="auth-panel" data-panel="forgot" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Enter your account email and we'll send you a link to reset your password.</p>
+      <form id="forgot-form">
+        <div class="field"><label>Email</label><input type="email" id="forgot-email" required placeholder="you@email.com"></div>
+        <button class="btn btn-primary btn-block" type="submit">Send Reset Link</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-back-to-login">Back to login</a></p>
+    </div>
+    <div class="auth-panel" data-panel="reset" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Choose a new password for your account.</p>
+      <form id="reset-password-form">
+        <div class="field"><label>New Password</label><input type="password" id="reset-new-password" required placeholder="New password" minlength="6"></div>
+        <button class="btn btn-primary btn-block" type="submit">Update Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Flush — Daily Draw. Real Stakes.</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Home page only: the benefits slider is the last section before the
+     footer, so trim the usual bottom breathing room a bit here. */
+  .content{ padding-bottom:30px; }
+</style>
+</head>
+<body>
+
+<div class="sidebar-scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-link">
+        <img src="logo.png" alt="Royal Flush logo" class="brand-logo">
+        <div class="name">Royal Flush<span>LOTTERY &amp; GAMES</span></div>
+      </a>
+      <button class="sidebar-close js-sidebar-close">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="active"><span class="ic">♠</span> Home</a>
+      <a href="tickets.html"><span class="ic">♥</span> Tickets</a>
+      <a href="draw.html"><span class="ic">♣</span> Draw</a>
+      <a href="royalflush.html"><span class="ic">♦</span> Royal Flush</a>
+      <a href="profile.html"><span class="ic">☺</span> My Profile</a>
+      <a href="admin.html" class="js-admin-nav-link" style="display:none;"><span class="ic">⚙</span> Admin</a>
+    </nav>
+    <div class="sidebar-foot">NEXT DRAW <b>DAILY · 3:00 PM</b><br>Play responsibly. 18+</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle js-sidebar-open">☰</button>
+        <span class="page-tag">Home</span>
+      </div>
+      <div class="topbar-right">
+        <a href="cart.html" class="icon-btn" title="Cart">
+          <svg class="bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8h12l-1.1 12.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 8z"/>
+            <path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>
+          </svg>
+          <span class="badge js-cart-badge">0</span>
+        </a>
+        <div class="wrap-relative">
+          <button class="auth-btn js-auth-btn js-auth-open is-guest"><span class="avatar">♣</span><span class="au-label">Login / Sign Up</span></button>
+          <div class="profile-pop js-profile-pop"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <!-- HERO SLIDER -->
+      <section class="slider">
+        <div class="slider-track">
+          <div class="slide">
+            <span class="eyebrow">Today's Jackpot</span>
+            <h1>One ticket. <em>Five cards.</em> A shot at the whole pot.</h1>
+            <p>Royal Flush runs a fair, timed draw every single day at 3:00 PM. Grab your numbers, watch the reveal live, and cash out straight to your wallet in USDT.</p>
+            <div class="cta-row">
+              <a href="tickets.html" class="btn btn-primary">Get Tickets <span class="suit">♠</span></a>
+              <a href="draw.html" class="btn btn-ghost">See Today's Draw</a>
+            </div>
+          </div>
+          <div class="slide">
+            <span class="eyebrow">Zero House Games</span>
+            <h1>Built for players who <em>read the odds.</em></h1>
+            <p>Transparent draw mechanics, on-chain payouts, and a live ticket count so you always know exactly what you're up against.</p>
+            <div class="cta-row">
+              <a href="royalflush.html" class="btn btn-gold">Meet the Royal Flush Coin</a>
+            </div>
+          </div>
+          <div class="slide">
+            <span class="eyebrow">Pay Your Way</span>
+            <h1>Deposit and cash out in <em>USDT or USDC.</em></h1>
+            <p>No banks, no delays. Fund your ticket bag with either stablecoin and collect winnings the same way.</p>
+            <div class="cta-row">
+              <a href="checkout.html" class="btn btn-primary">How Checkout Works</a>
+            </div>
+          </div>
+        </div>
+        <div class="slider-dots"></div>
+        <div class="slider-arrows"><button class="js-prev">‹</button><button class="js-next">›</button></div>
+      </section>
+
+      <!-- MINI TICKER SLIDER -->
+      <section class="ticker-strip" aria-hidden="true">
+        <div class="ticker-track">
+          <span>♠ CRYPTO LOTTO</span>
+          <span>DAILY DRAWS · CARDS CLOSE 3:00 PM</span>
+          <span>♥ USDT + USDC ACCEPTED</span>
+          <span>HANDS RANKED, NOT BALLS DRAWN</span>
+          <span>♣ INSTANT STABLECOIN PAYOUTS</span>
+          <span>NO BANKS · NO DELAYS</span>
+          <span>♦ TEN TICKETS. ONE DRAW.</span>
+          <span>CRYPTO LOTTO</span>
+          <span>♠ CRYPTO LOTTO</span>
+          <span>DAILY DRAWS · CARDS CLOSE 3:00 PM</span>
+          <span>♥ USDT + USDC ACCEPTED</span>
+          <span>HANDS RANKED, NOT BALLS DRAWN</span>
+          <span>♣ INSTANT STABLECOIN PAYOUTS</span>
+          <span>NO BANKS · NO DELAYS</span>
+          <span>♦ TEN TICKETS. ONE DRAW.</span>
+          <span>CRYPTO LOTTO</span>
+        </div>
+      </section>
+
+      <!-- DAILY DRAW TIMER -->
+      <section class="section">
+        <div class="countdown-panel">
+          <span class="eyebrow">Cards close daily at 3:00 PM</span>
+          <h2>Today's draw locks in</h2>
+          <div class="countdown" id="home-countdown">
+            <div class="unit"><div class="num d-h">00</div><span class="lbl">Hours</span></div>
+            <div class="sep">:</div>
+            <div class="unit"><div class="num d-m">00</div><span class="lbl">Minutes</span></div>
+            <div class="sep">:</div>
+            <div class="unit"><div class="num d-s">00</div><span class="lbl">Seconds</span></div>
+          </div>
+          <a href="tickets.html" class="btn btn-gold">Buy Before It Locks</a>
+        </div>
+      </section>
+
+      <!-- WHY PLAY / FEATURE HOVER BOXES -->
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">The Table</span>
+            <h2>Four reasons regulars stay</h2>
+          </div>
+          <p>Hover any card to flip it — that's the same interaction you'll use to inspect every ticket in the draw.</p>
+        </div>
+        <div class="card-grid">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <div class="suit-big suit red">♠</div>
+                <div><h4>Daily Draw</h4><span class="tag">EVERY DAY · 3PM</span></div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>Winners are pulled live every afternoon — no waiting a week to know if you're in.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <div class="suit-big suit gold">♥</div>
+                <div><h4>USDT &amp; USDC Payouts</h4><span class="tag">INSTANT SETTLE</span></div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>Winnings land in your profile balance and withdraw straight to your USDT wallet.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <div class="suit-big suit red">♣</div>
+                <div><h4>Live Ticket Count</h4><span class="tag">FULL ODDS VISIBLE</span></div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>Every ticket sold today is visible before you buy — no hidden pool sizes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <div class="suit-big suit gold">♦</div>
+                <div><h4>Royal Flush</h4><span class="tag">LISTED ON BNB</span></div>
+              </div>
+              <div class="flip-face flip-back">
+                <p>Hold the house token for perks, plus a running airdrop for active players.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CRYPTO LOTTO POSTER -->
+      <section class="poster-banner">
+        <div class="poster-frame">
+          <span class="poster-eyebrow">♠ ♥ ♣ ♦ THE HOUSE TABLE ♦ ♣ ♥ ♠</span>
+          <h2 class="poster-title">CRYPTO LOTTO<br><em>Reinvented.</em></h2>
+          <p class="poster-sub">One hand, dealt in the open. One draw, every single day. Paid straight to your wallet in USDT or USDC the moment the cards flip.</p>
+          <div class="poster-stats">
+            <div><b>3:00 PM</b><span>Daily Cut-off</span></div>
+            <div><b>USDT / USDC</b><span>Settle Instantly</span></div>
+            <div><b>10</b><span>Tickets On Sale</span></div>
+          </div>
+          <a href="tickets.html" class="btn btn-gold">Enter Today's Lotto</a>
+        </div>
+      </section>
+
+      <!-- 2-UP FEATURED POSTERS -->
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Featured</span><h2>This Week On The Table</h2></div>
+        </div>
+        <div class="duo-poster-grid">
+          <div class="duo-poster a" data-suit="♦">
+            <span class="dp-tag">Guaranteed Pot</span>
+            <h3>Daily Jackpot</h3>
+            <p>Today's pool is already climbing. Every ticket bought before 3:00 PM shares the pot.</p>
+            <a href="draw.html" class="btn btn-primary">See Today's Odds</a>
+          </div>
+          <div class="duo-poster b" data-suit="♠">
+            <span class="dp-tag">Fri – Sun Only</span>
+            <h3>Weekend Double Draw</h3>
+            <p>Two hands revealed per day on weekends — double the shots at the same ticket price.</p>
+            <a href="tickets.html" class="btn btn-gold">Get Weekend Tickets</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2 MORE POSTERS — WIN BIG IN USDT & USDC -->
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Win Big</span><h2>Cash Out In USDT &amp; USDC</h2></div>
+          <p>Every payout on the table settles straight to your wallet — pick whichever stablecoin you hold.</p>
+        </div>
+        <div class="duo-poster-grid">
+          <div class="duo-poster c" data-suit="♣">
+            <span class="dp-tag">Stablecoin Payouts</span>
+            <h3>Win Big in USDT</h3>
+            <p>Top hand takes the pot, paid straight to your USDT wallet the moment the cards flip — no waiting, no conversion.</p>
+            <a href="checkout.html" class="btn btn-primary">Pay &amp; Win in USDT</a>
+          </div>
+          <div class="duo-poster d" data-suit="♥">
+            <span class="dp-tag">Stablecoin Payouts</span>
+            <h3>Win Big in USDC</h3>
+            <p>Prefer USDC? Same odds, same daily draw — winnings settle to your USDC wallet just as fast.</p>
+            <a href="checkout.html" class="btn btn-gold">Pay &amp; Win in USDC</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- RECENT WINNERS MARQUEE -->
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Recent Winners</span><h2>Paid Out This Week</h2></div>
+          <p>A rolling look at recent draws — sample results shown for design purposes.</p>
+        </div>
+        <div class="winners-strip" aria-hidden="true">
+          <div class="winners-track" id="winners-track"></div>
+        </div>
+      </section>
+
+      <div class="divider-suit"><span>♠ ♥ ♣ ♦</span></div>
+
+      <section class="section" style="margin-top:0;">
+        <div class="section-head">
+          <div><span class="eyebrow">New Here?</span><h2>Three steps to your first draw</h2></div>
+        </div>
+        <div class="card-grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr));">
+          <div class="result-card"><div class="date">STEP 01</div><div class="num" style="font-size:1.2rem;">Create your table seat</div><div class="win">Sign up with an email — takes ten seconds, no card required.</div></div>
+          <div class="result-card"><div class="date">STEP 02</div><div class="num" style="font-size:1.2rem;">Pick your tickets</div><div class="win">Browse today's ticket board and add your numbers to the bag.</div></div>
+          <div class="result-card"><div class="date">STEP 03</div><div class="num" style="font-size:1.2rem;">Pay with USDT or USDC</div><div class="win">Check out, confirm the transfer, and you're in today's draw.</div></div>
+        </div>
+      </section>
+
+      <!-- ROYAL FLUSH BENEFITS / GLOBAL PAYMENTS SLIDER -->
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Why Royal Flush</span><h2>Built To Play From Anywhere</h2></div>
+        </div>
+        <section class="slider">
+          <div class="slider-track">
+            <div class="slide">
+              <span class="eyebrow">The Royal Flush Edge</span>
+              <h1>A crypto lotto with <em>nothing to hide.</em></h1>
+              <p>Every hand is ranked by standard poker rules, every ticket count is visible before you buy, and every draw locks at the same time, daily. No hidden pools, no house edge tricks — just cards, ranked in the open.</p>
+              <div class="cta-row">
+                <a href="royalflush.html" class="btn btn-primary">See How It Works</a>
+              </div>
+            </div>
+            <div class="slide">
+              <span class="eyebrow">Pay Your Way, Anywhere</span>
+              <h1>Easy payments, <em>no matter where you play.</em></h1>
+              <p>Fund your bag and collect winnings in USDT or USDC — no bank transfers, no currency conversion, no borders. If you can send a stablecoin, you can play the table.</p>
+              <div class="cta-row">
+                <a href="checkout.html" class="btn btn-gold">See Checkout Options</a>
+              </div>
+            </div>
+            <div class="slide">
+              <span class="eyebrow">Play On Any Screen</span>
+              <h1>Built mobile-first, <em>fits any device.</em></h1>
+              <p>Browse tickets, flip cards, and check out from your phone just as easily as your desktop — the whole table is designed to fit your screen, wherever you're sitting.</p>
+              <div class="cta-row">
+                <a href="tickets.html" class="btn btn-primary">Browse Tickets</a>
+              </div>
+            </div>
+          </div>
+          <div class="slider-dots"></div>
+          <div class="slider-arrows"><button class="js-prev">‹</button><button class="js-next">›</button></div>
+        </section>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="fb-mark">
+              <img src="logo.png" alt="Royal Flush logo" class="footer-logo">
+              <span>Royal Flush</span>
+            </a>
+            <p>A daily-draw lottery table with transparent odds, live results, and USDT/USDC payouts. Play the hand, not the house.</p>
+            <div class="footer-social">
+              <a href="https://x.com/royalflush2050?s=11 " target="_blank" aria-label="X / Twitter" title="X / Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+              </a>
+              <a href="https://t.me/royalflush2050 " target="_blank" aria-label="Telegram" title="Telegram">
+                <svg viewBox="0 0 24 24"><path d="M21.8 4.2 2.7 11.6c-1.3.5-1.3 1.2-.2 1.6l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.8-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1-1.5zM8.8 14.4l9.5-6c.4-.3.8-.1.5.2l-8 7.3-.3 3.1-1.4-4.6z"/></svg>
+              </a>
+              <a href="#" aria-label="Discord" title="Discord">
+                <svg viewBox="0 0 24 24"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4l-.3.5c1.7.4 2.6 1 3.5 1.7-1.5-.7-3-1.3-5.1-1.3s-3.6.6-5.1 1.3c.9-.7 1.9-1.4 3.5-1.7L12.1 4a17.6 17.6 0 0 0-4.4 1.4C4.9 9.1 4 12.7 4.3 16.2a17.7 17.7 0 0 0 5.1 2.5l.7-1.1c-.8-.3-1.6-.7-2.3-1.2l.5-.4c2.9 1.3 6 1.3 8.9 0l.5.4c-.7.5-1.5.9-2.3 1.2l.7 1.1a17.7 17.7 0 0 0 5.1-2.5c.4-4-.6-7.5-1.9-10.8zM9.7 14.1c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7zm4.6 0c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4 .1 1 0 1.7.2 2.1.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.4 1.1.4 2.1.1 1 .1 1.3.1 4s0 3-.1 4c0 1-.2 1.7-.4 2.1-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1.1.4-2.1.4-1 .1-1.3.1-4 .1s-3 0-4-.1c-1 0-1.7-.2-2.1-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.4-1.1-.4-2.1-.1-1-.1-1.3-.1-4s0-3 .1-4c0-1 .2-1.7.4-2.1.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1.1-.4 2.1-.4 1-.1 1.3-.1 4-.1zm0 1.8c-2.6 0-2.9 0-4 .1-.8 0-1.2.2-1.5.3-.4.1-.6.3-.9.6-.3.3-.4.5-.6.9-.1.3-.3.7-.3 1.5-.1 1.1-.1 1.4-.1 4s0 2.9.1 4c0 .8.2 1.2.3 1.5.1.4.3.6.6.9.3.3.5.4.9.6.3.1.7.3 1.5.3 1.1.1 1.4.1 4 .1s2.9 0 4-.1c.8 0 1.2-.2 1.5-.3.4-.1.6-.3.9-.6.3-.3.4-.5.6-.9.1-.3.3-.7.3-1.5.1-1.1.1-1.4.1-4s0-2.9-.1-4c0-.8-.2-1.2-.3-1.5-.1-.4-.3-.6-.6-.9-.3-.3-.5-.4-.9-.6-.3-.1-.7-.3-1.5-.3-1.1-.1-1.4-.1-4-.1zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.7-2a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M22 12s0-3.1-.4-4.6a3 3 0 0 0-2.1-2.1C17.9 5 12 5 12 5s-5.9 0-7.5.3A3 3 0 0 0 2.4 7.4C2 8.9 2 12 2 12s0 3.1.4 4.6a3 3 0 0 0 2.1 2.1C6.1 19 12 19 12 19s5.9 0 7.5-.3a3 3 0 0 0 2.1-2.1c.4-1.5.4-4.6.4-4.6zM9.9 15.3V8.7l6 3.3-6 3.3z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-cols">
+            <div class="footer-col">
+              <b>Play</b>
+              <a href="index.html">Home</a>
+              <a href="tickets.html">Tickets</a>
+              <a href="draw.html">Today's Draw</a>
+              <a href="royalflush.html">Royal Flush</a>
+              <a href="cart.html">Your Bag</a>
+              <a href="checkout.html">Checkout</a>
+            </div>
+            <div class="footer-col">
+              <b>Support</b>
+              <a href="help-center.html">Help Center</a>
+              <a href="faqs.html">FAQs</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="live-chat.html">Live Chat</a>
+              <a href="report-issue.html">Report an Issue</a>
+              <a href="responsible-play.html">Responsible Play</a>
+            </div>
+            <div class="footer-col">
+              <b>Company</b>
+              <a href="about.html">About Us</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="careers.html">Careers</a>
+              <a href="press.html">Press &amp; Media</a>
+              <a href="blog.html">Blog</a>
+              <a href="affiliates.html">Affiliate Program</a>
+            </div>
+            <div class="footer-col">
+              <b>Legal</b>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="cookies.html">Cookie Policy</a>
+              <a href="aml.html">AML Policy</a>
+              <a href="refunds.html">Refund Policy</a>
+              <a href="age-verification.html">Age Verification</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-disclaimer">Royal Flush is a demo storefront. All draws, balances, token figures, and payments shown here are simulated for design purposes. 18+ only where lottery-style games are legal. Nothing on this site is financial advice.</p>
+
+        <div class="footer-bottom">
+          <p>&copy; Royal Flush 2026. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="cookies.html">Cookies</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal-box">
+    <button class="close-x js-modal-close">✕</button>
+    <div class="modal-tabs js-modal-tabs">
+      <button class="active" data-tab="login">Login</button>
+      <button data-tab="signup">Sign Up</button>
+    </div>
+    <div class="auth-panel" data-panel="login" style="display:block;">
+      <form id="login-form">
+        <div class="field"><label>Email</label><input type="email" id="login-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="login-password" required placeholder="••••••••"></div>
+        <button class="btn btn-primary btn-block" type="submit">Enter the Table</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-forgot-link">Forgot password?</a></p>
+    </div>
+    <div class="auth-panel" data-panel="signup" style="display:none;">
+      <form id="signup-form">
+        <div class="field"><label>Full Name</label><input type="text" id="signup-name" required placeholder="Alex Rivera"></div>
+        <div class="field"><label>Date of Birth</label><input type="date" id="signup-dob" required></div>
+        <div class="field"><label>Email</label><input type="email" id="signup-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="signup-password" required placeholder="Create a password" minlength="6"></div>
+        <label class="check-field">
+          <input type="checkbox" id="signup-age-confirm" required>
+          <span>I confirm I am 18 years of age or older and eligible to play lottery-style games in my region.</span>
+        </label>
+        <p class="form-error" id="signup-error">You must be 18 or older to create an account.</p>
+        <button class="btn btn-gold btn-block" type="submit">Create Account</button>
+      </form>
+      <p class="form-note">By joining you confirm you meet the legal age for lottery-style games in your region.</p>
+    </div>
+    <div class="auth-panel" data-panel="forgot" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Enter your account email and we'll send you a link to reset your password.</p>
+      <form id="forgot-form">
+        <div class="field"><label>Email</label><input type="email" id="forgot-email" required placeholder="you@email.com"></div>
+        <button class="btn btn-primary btn-block" type="submit">Send Reset Link</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-back-to-login">Back to login</a></p>
+    </div>
+    <div class="auth-panel" data-panel="reset" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Choose a new password for your account.</p>
+      <form id="reset-password-form">
+        <div class="field"><label>New Password</label><input type="password" id="reset-new-password" required placeholder="New password" minlength="6"></div>
+        <button class="btn btn-primary btn-block" type="submit">Update Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+<script>
+  RF.runDailyCountdown('home-countdown');
+
+  // Sample recent-winner feed — swap in real data later. Amounts
+  // alternate USDT/USDC to show both settle the same way.
+  const WINNERS = [
+    { name: 'Marcus T.', amt: '2,000 USDT' },
+    { name: 'Priya S.',  amt: '10,000 USDC' },
+    { name: 'Daniel R.', amt: '50,000 USDT' },
+    { name: 'Aisha K.',  amt: '10,000 USDC' },
+    { name: 'Liam O.',   amt: '2,000 USDT'   },
+    { name: 'Sofia M.',  amt: '15,000 USDC' },
+    { name: 'Ethan W.',  amt: '2,000 USDT' },
+    { name: 'Grace N.',  amt: '1,00,000 USDC' },
+    { name: 'Noah P.',   amt: '50,000 USDT' },
+    { name: 'Maya L.',   amt: '5,000 USDC' },
+    { name: 'Jonas F.',  amt: '2,000 USDT' },
+    { name: 'Ivy C.',    amt: '5,000 USDC' },
+    { name: 'Kumar.',  amt: '15,000 USDC' },
+    { name: 'Ravi.',  amt: '2,000 USDT' },
+    { name: 'Raja.',  amt: '1,00,000 USDC' },
+    { name: 'Harish.',   amt: '50,000 USDT' },
+    { name: 'Joe.',   amt: '5,000 USDC' },
+    { name: 'Thomas F.',  amt: '2,000 USDT' },
+    { name: 'Edwin.',    amt: '5,000 USDC' }
+  ];
+  const SUITS = ['♠','♥','♣','♦'];
+  const chip = (w,i) => `
+    <div class="winner-chip">
+      <span class="suit ${SUITS[i%4]==='♥'||SUITS[i%4]==='♦' ? 'red':'gold'}">${SUITS[i%4]}</span>
+      <span class="w-name">${w.name}</span>
+      <span class="w-amt">+${w.amt}</span>
+    </div>`;
+  // Rendered twice back-to-back so the marquee loops seamlessly.
+  document.getElementById('winners-track').innerHTML =
+    WINNERS.map(chip).join('') + WINNERS.map(chip).join('');
+</script>
+</body>
+</html>

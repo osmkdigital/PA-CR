@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Draw — Royal Flush</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar-scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-link">
+        <img src="logo.png" alt="Royal Flush logo" class="brand-logo">
+        <div class="name">Royal Flush<span>LOTTERY &amp; GAMES</span></div>
+      </a>
+      <button class="sidebar-close js-sidebar-close">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">♠</span> Home</a>
+      <a href="tickets.html"><span class="ic">♥</span> Tickets</a>
+      <a href="draw.html" class="active"><span class="ic">♣</span> Draw</a>
+      <a href="royalflush.html"><span class="ic">♦</span> Royal Flush</a>
+      <a href="profile.html"><span class="ic">☺</span> My Profile</a>
+      <a href="admin.html" class="js-admin-nav-link" style="display:none;"><span class="ic">⚙</span> Admin</a>
+    </nav>
+    <div class="sidebar-foot">NEXT DRAW <b>DAILY · 3:00 PM</b><br>Play responsibly. 18+</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle js-sidebar-open">☰</button>
+        <span class="page-tag">Draw</span>
+      </div>
+      <div class="topbar-right">
+        <a href="cart.html" class="icon-btn" title="Cart">
+          <svg class="bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8h12l-1.1 12.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 8z"/>
+            <path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>
+          </svg>
+          <span class="badge js-cart-badge">0</span>
+        </a>
+        <div class="wrap-relative">
+          <button class="auth-btn js-auth-btn js-auth-open is-guest"><span class="avatar">♣</span><span class="au-label">Login / Sign Up</span></button>
+          <div class="profile-pop js-profile-pop"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <section class="countdown-panel">
+        <span class="eyebrow">Next Full Cycle</span>
+        <h2>24-Hour Draw Clock</h2>
+        <p style="max-width:420px;margin:0 auto 6px;">This clock tracks the full rolling cycle between draws — resets automatically once a draw completes.</p>
+        <div class="countdown" id="draw-countdown">
+          <div class="unit"><div class="num d-h">24</div><span class="lbl">Hours</span></div>
+          <div class="sep">:</div>
+          <div class="unit"><div class="num d-m">00</div><span class="lbl">Minutes</span></div>
+          <div class="sep">:</div>
+          <div class="unit"><div class="num d-s">00</div><span class="lbl">Seconds</span></div>
+        </div>
+        <a href="tickets.html" class="btn btn-primary">Buy Tickets For This Cycle</a>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Today's Draw</span><h2>10 Winning Tickets</h2></div>
+          <p id="results-sub">Hover a card for the winning ticket and payout from today's 3:00 PM draw.</p>
+        </div>
+        <div class="card-grid" id="results-grid"></div>
+      </section>
+
+      <!-- PAST DAY RESULT -->
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Yesterday's Draw</span><h2>Past Day Result</h2></div>
+          <p id="last24-sub">Every winning ticket and number from yesterday's 3:00 PM draw.</p>
+          <p id="last24-date" style="font-size:.78rem;opacity:.7;margin-top:2px;"></p>
+        </div>
+        <div class="card-grid" id="last24-grid" style="margin-bottom:22px;"></div>
+      </section>
+
+      <!-- POSTER — WIN BIG -->
+      <section class="poster-banner" style="margin-top:6px;">
+        <div class="poster-frame">
+          <span class="poster-eyebrow">♠ ♥ ♣ ♦ ROYAL FLUSH LOTTO ♦ ♣ ♥ ♠</span>
+          <h2 class="poster-title" style="font-size:2.6rem;">Win big.<br><em>Every single card pays.</em></h2>
+          <p class="poster-sub">Ten winning tickets, one 3:00 PM draw, real payouts settled straight to your wallet in USDT/USDC. From a Dagger to a Royal Flush — every hand on the board is worth cashing in.</p>
+
+          <div class="prize-ladder">
+            <div class="prize-tile" data-suit="♦">
+              <div class="pt-name">Dagger</div>
+              <div class="pt-amt">$2,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♣">
+              <div class="pt-name">Joker</div>
+              <div class="pt-amt">$5,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♠">
+              <div class="pt-name">Jack</div>
+              <div class="pt-amt">$10,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♥">
+              <div class="pt-name">Queen</div>
+              <div class="pt-amt">$15,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♦">
+              <div class="pt-name">King</div>
+              <div class="pt-amt">$20,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♣">
+              <span class="pt-flag">Rare</span>
+              <div class="pt-name">Black Dragon</div>
+              <div class="pt-amt">$25,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♥">
+              <span class="pt-flag">Rare</span>
+              <div class="pt-name">Red Dragon</div>
+              <div class="pt-amt">$50,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="♠">
+              <span class="pt-flag">Elite</span>
+              <div class="pt-name">Straight</div>
+              <div class="pt-amt">$100,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile jackpot" data-suit="♦">
+              <span class="pt-flag">Jackpot</span>
+              <div class="pt-name">Royal Flush</div>
+              <div class="pt-amt">$200,000<small>USDT/USDC</small></div>
+            </div>
+            <div class="prize-tile" data-suit="?">
+              <span class="pt-flag">Wild</span>
+              <div class="pt-name">X Card</div>
+              <div class="pt-amt">Varies<small>Prize depends on the card drawn</small></div>
+            </div>
+          </div>
+
+          <div class="poster-stats">
+            <div><b>200,000</b><span>Top Payout (USDT)</span></div>
+            <div><b>Daily</b><span>Draw at 3:00 PM</span></div>
+            <div><b>10</b><span>Winning Tickets</span></div>
+            <div><b>Fixed</b><span>Posted Odds</span></div>
+          </div>
+          <a href="tickets.html" class="btn btn-gold" style="margin-top:26px;">Buy Tickets Now</a>
+        </div>
+      </section>
+
+      <!-- REDEEM TICKET -->
+      <section class="section">
+        <div class="section-head">
+          <div><span class="eyebrow">Have a Code?</span><h2>Redeem Ticket</h2></div>
+          <p>Redeem codes drop a free ticket straight into today's draw — no purchase needed.</p>
+        </div>
+
+        <div class="redeem-box" id="redeem-logged-in" style="display:none;">
+          <div class="field" style="margin-bottom:0;">
+            <label>Redeem Code</label>
+            <div class="redeem-row">
+              <input type="text" id="redeem-code" placeholder="e.g. ROYAL-2026-XK4P" autocomplete="off">
+              <button class="btn btn-gold" id="redeem-btn" type="button">Redeem</button>
+            </div>
+          </div>
+          <p class="form-note" style="text-align:left;margin-top:12px;">One code per account. Redeemed tickets appear in your <a href="cart.html">bag</a> at $0.00 and lock into today's draw at checkout.</p>
+        </div>
+
+        <div class="redeem-locked" id="redeem-guest" style="display:none;">
+          <span class="suit">♣</span>
+          <h3>Log in to redeem a code</h3>
+          <p>Create a free account or sign in to paste your redeem code and claim your ticket.</p>
+          <button class="btn btn-primary js-auth-open" type="button">Login / Sign Up</button>
+        </div>
+      </section>
+
+      <!-- POSTER — BUY TICKETS -->
+      <section class="poster-banner" style="margin-top:20px;">
+        <div class="poster-frame">
+          <span class="poster-eyebrow">♠ ♥ ♣ ♦ TODAY'S BOARD ♦ ♣ ♥ ♠</span>
+          <h2 class="poster-title" style="font-size:2.6rem;">Your hand<br><em>is waiting.</em></h2>
+          <p class="poster-sub">Stack as many tickets as you want for today's draw — the more hands in the bag, the more shots at the pot. Priced and settled in stablecoins.</p>
+          <div class="poster-stats">
+            <div><b>No Cap</b><span>Tickets Per Draw</span></div>
+            <div><b>USDT/USDC</b><span>Instant Payout</span></div>
+            <div><b>18+</b><span>Play Responsibly</span></div>
+          </div>
+          <a href="tickets.html" class="btn btn-primary" style="margin-top:26px;">See Today's Board</a>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="fb-mark">
+              <img src="logo.png" alt="Royal Flush logo" class="footer-logo">
+              <span>Royal Flush</span>
+            </a>
+            <p>A daily-draw lottery table with transparent odds, live results, and USDT/USDC payouts. Play the hand, not the house.</p>
+            <div class="footer-social">
+              <a href="https://x.com/royalflush2050?s=11" target="_blank" aria-label="X / Twitter" title="X / Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+              </a>
+              <a href="https://t.me/royalflush2050 " target="_blank" aria-label="Telegram" title="Telegram">
+                <svg viewBox="0 0 24 24"><path d="M21.8 4.2 2.7 11.6c-1.3.5-1.3 1.2-.2 1.6l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.8-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1-1.5zM8.8 14.4l9.5-6c.4-.3.8-.1.5.2l-8 7.3-.3 3.1-1.4-4.6z"/></svg>
+              </a>
+              <a href="#" aria-label="Discord" title="Discord">
+                <svg viewBox="0 0 24 24"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4l-.3.5c1.7.4 2.6 1 3.5 1.7-1.5-.7-3-1.3-5.1-1.3s-3.6.6-5.1 1.3c.9-.7 1.9-1.4 3.5-1.7L12.1 4a17.6 17.6 0 0 0-4.4 1.4C4.9 9.1 4 12.7 4.3 16.2a17.7 17.7 0 0 0 5.1 2.5l.7-1.1c-.8-.3-1.6-.7-2.3-1.2l.5-.4c2.9 1.3 6 1.3 8.9 0l.5.4c-.7.5-1.5.9-2.3 1.2l.7 1.1a17.7 17.7 0 0 0 5.1-2.5c.4-4-.6-7.5-1.9-10.8zM9.7 14.1c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7zm4.6 0c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4 .1 1 0 1.7.2 2.1.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.4 1.1.4 2.1.1 1 .1 1.3.1 4s0 3-.1 4c0 1-.2 1.7-.4 2.1-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1.1.4-2.1.4-1 .1-1.3.1-4 .1s-3 0-4-.1c-1 0-1.7-.2-2.1-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.4-1.1-.4-2.1-.1-1-.1-1.3-.1-4s0-3 .1-4c0-1 .2-1.7.4-2.1.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1.1-.4 2.1-.4 1-.1 1.3-.1 4-.1zm0 1.8c-2.6 0-2.9 0-4 .1-.8 0-1.2.2-1.5.3-.4.1-.6.3-.9.6-.3.3-.4.5-.6.9-.1.3-.3.7-.3 1.5-.1 1.1-.1 1.4-.1 4s0 2.9.1 4c0 .8.2 1.2.3 1.5.1.4.3.6.6.9.3.3.5.4.9.6.3.1.7.3 1.5.3 1.1.1 1.4.1 4 .1s2.9 0 4-.1c.8 0 1.2-.2 1.5-.3.4-.1.6-.3.9-.6.3-.3.4-.5.6-.9.1-.3.3-.7.3-1.5.1-1.1.1-1.4.1-4s0-2.9-.1-4c0-.8-.2-1.2-.3-1.5-.1-.4-.3-.6-.6-.9-.3-.3-.5-.4-.9-.6-.3-.1-.7-.3-1.5-.3-1.1-.1-1.4-.1-4-.1zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.7-2a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M22 12s0-3.1-.4-4.6a3 3 0 0 0-2.1-2.1C17.9 5 12 5 12 5s-5.9 0-7.5.3A3 3 0 0 0 2.4 7.4C2 8.9 2 12 2 12s0 3.1.4 4.6a3 3 0 0 0 2.1 2.1C6.1 19 12 19 12 19s5.9 0 7.5-.3a3 3 0 0 0 2.1-2.1c.4-1.5.4-4.6.4-4.6zM9.9 15.3V8.7l6 3.3-6 3.3z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-cols">
+            <div class="footer-col">
+              <b>Play</b>
+              <a href="index.html">Home</a>
+              <a href="tickets.html">Tickets</a>
+              <a href="draw.html">Today's Draw</a>
+              <a href="royalflush.html">Royal Flush</a>
+              <a href="cart.html">Your Bag</a>
+              <a href="checkout.html">Checkout</a>
+            </div>
+            <div class="footer-col">
+              <b>Support</b>
+              <a href="help-center.html">Help Center</a>
+              <a href="faqs.html">FAQs</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="live-chat.html">Live Chat</a>
+              <a href="report-issue.html">Report an Issue</a>
+              <a href="responsible-play.html">Responsible Play</a>
+            </div>
+            <div class="footer-col">
+              <b>Company</b>
+              <a href="about.html">About Us</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="careers.html">Careers</a>
+              <a href="press.html">Press &amp; Media</a>
+              <a href="blog.html">Blog</a>
+              <a href="affiliates.html">Affiliate Program</a>
+            </div>
+            <div class="footer-col">
+              <b>Legal</b>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="cookies.html">Cookie Policy</a>
+              <a href="aml.html">AML Policy</a>
+              <a href="refunds.html">Refund Policy</a>
+              <a href="age-verification.html">Age Verification</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-disclaimer">Royal Flush is a demo storefront. All draws, balances, token figures, and payments shown here are simulated for design purposes. 18+ only where lottery-style games are legal. Nothing on this site is financial advice.</p>
+
+        <div class="footer-bottom">
+          <p>&copy; Royal Flush 2026. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="cookies.html">Cookies</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal-box">
+    <button class="close-x js-modal-close">✕</button>
+    <div class="modal-tabs js-modal-tabs">
+      <button class="active" data-tab="login">Login</button>
+      <button data-tab="signup">Sign Up</button>
+    </div>
+    <div class="auth-panel" data-panel="login" style="display:block;">
+      <form id="login-form">
+        <div class="field"><label>Email</label><input type="email" id="login-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="login-password" required placeholder="••••••••"></div>
+        <button class="btn btn-primary btn-block" type="submit">Enter the Table</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-forgot-link">Forgot password?</a></p>
+    </div>
+    <div class="auth-panel" data-panel="signup" style="display:none;">
+      <form id="signup-form">
+        <div class="field"><label>Full Name</label><input type="text" id="signup-name" required placeholder="Alex Rivera"></div>
+        <div class="field"><label>Date of Birth</label><input type="date" id="signup-dob" required></div>
+        <div class="field"><label>Email</label><input type="email" id="signup-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="signup-password" required placeholder="Create a password" minlength="6"></div>
+        <label class="check-field">
+          <input type="checkbox" id="signup-age-confirm" required>
+          <span>I confirm I am 18 years of age or older and eligible to play lottery-style games in my region.</span>
+        </label>
+        <p class="form-error" id="signup-error">You must be 18 or older to create an account.</p>
+        <button class="btn btn-gold btn-block" type="submit">Create Account</button>
+      </form>
+      <p class="form-note">By joining you confirm you meet the legal age for lottery-style games in your region.</p>
+    </div>
+    <div class="auth-panel" data-panel="forgot" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Enter your account email and we'll send you a link to reset your password.</p>
+      <form id="forgot-form">
+        <div class="field"><label>Email</label><input type="email" id="forgot-email" required placeholder="you@email.com"></div>
+        <button class="btn btn-primary btn-block" type="submit">Send Reset Link</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-back-to-login">Back to login</a></p>
+    </div>
+    <div class="auth-panel" data-panel="reset" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Choose a new password for your account.</p>
+      <form id="reset-password-form">
+        <div class="field"><label>New Password</label><input type="password" id="reset-new-password" required placeholder="New password" minlength="6"></div>
+        <button class="btn btn-primary btn-block" type="submit">Update Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+<script>
+  RF.run24hCountdown('draw-countdown');
+
+  // =========================================================
+  // RESULTS — winning numbers come from public.winning_numbers,
+  // written only by the CRM's "Announce Winning Numbers" action
+  // (admin-gated via the announce_winning_number() RPC). This page
+  // just reads them — one row per game per draw_date, single
+  // winning number per game per day.
+  // =========================================================
+
+  // Same ticket catalog as tickets.html — image, name, and price for
+  // every ticket. Keep this list in sync with tickets.html so the
+  // artwork and names always match across both pages.
+  const TICKETS = [
+    { id: 'dagger',       name: 'Dagger',       price: 2,   img: 'cards/dagger.svg' },
+    { id: 'joker',        name: 'Joker',        price: 5,   img: 'cards/joker.svg' },
+    { id: 'jack',         name: 'Jack',         price: 10,  img: 'cards/jack.svg' },
+    { id: 'queen',        name: 'Queen',        price: 15,  img: 'cards/queen.svg' },
+    { id: 'king',         name: 'King',         price: 20,  img: 'cards/king.svg' },
+    { id: 'black-dragon', name: 'Black Dragon', price: 25,  img: 'cards/black-dragon.svg' },
+    { id: 'red-dragon',   name: 'Red Dragon',   price: 50,  img: 'cards/red-dragon.svg' },
+    { id: 'straight',     name: 'Straight',     price: 100, img: 'cards/straight.svg' },
+    { id: 'royal-flush',  name: 'Royal Flush',  price: 200, img: 'cards/royal-flush.svg' },
+    { id: 'x-card',       name: 'X Card',       price: 10,  img: 'cards/x-card.svg', tag: 'RANDOM CARD' }
+  ];
+
+  function isoDate(d) {
+    // local calendar date as YYYY-MM-DD, matching the `date` column
+    // in Postgres (avoid toISOString(), which is UTC and can land on
+    // the wrong day near midnight).
+    var y = d.getFullYear(), m = String(d.getMonth() + 1).padStart(2, '0'), day = String(d.getDate()).padStart(2, '0');
+    return y + '-' + m + '-' + day;
+  }
+
+  function resultCard(winner, closedAtLabel, number) {
+    return `
+      <div class="result-item">
+        <div class="flip-card" style="height:220px;">
+          <div class="flip-card-inner">
+            <div class="flip-face flip-front">
+              <img class="card-img" src="${winner.img}" alt="${winner.name}">
+              <div><h4>${winner.name}</h4><span class="tag">${closedAtLabel}</span></div>
+            </div>
+            <div class="flip-face flip-back">
+              <div class="price" style="font-size:1.15rem;">${winner.name}</div>
+              <p>$${winner.price.toLocaleString()} entry · today's number below</p>
+            </div>
+          </div>
+        </div>
+        <div class="winning-numbers">
+          <div class="wn-label">Winning Number</div>
+          ${number ? `<div class="win-num">${number}</div>` : `<div class="win-num win-num-pending">TBD</div>`}
+        </div>
+      </div>
+    `;
+  }
+
+  const grid = document.getElementById('results-grid');
+  const resultsSub = document.getElementById('results-sub');
+
+  // Results only reveal once today's 3:00 PM draw has actually closed —
+  // before that, show a locked state instead of publishing early.
+  const now = new Date();
+  const todaysDrawTime = new Date(now);
+  todaysDrawTime.setHours(15, 0, 0, 0);
+  const resultsReady = now >= todaysDrawTime;
+  const todayLabel = now.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
+
+  async function renderResults(){
+    if (!resultsReady) {
+      resultsSub.textContent = "Today's draw closes at 3:00 PM — check back right after to see the 10 winning tickets.";
+      grid.innerHTML = `
+        <div class="empty-state" style="grid-column:1/-1;">
+          <span class="suit">♣</span>
+          <h3>Results drop at 3:00 PM</h3>
+          <p>${todayLabel}'s hands haven't been revealed yet. Come back after the clock hits zero.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const winningNumbers = await RF.getWinningNumbers(isoDate(new Date()));
+    const announcedCount = TICKETS.filter(t => winningNumbers[t.id]).length;
+
+    if (announcedCount === 0) {
+      resultsSub.textContent = `${todayLabel}'s draw has closed — numbers are being finalized, check back shortly.`;
+      grid.innerHTML = `
+        <div class="empty-state" style="grid-column:1/-1;">
+          <span class="suit">♣</span>
+          <h3>Numbers not announced yet</h3>
+          <p>The draw closed, but today's winning numbers haven't been published. This updates automatically the moment they are.</p>
+        </div>
+      `;
+      return;
+    }
+
+    resultsSub.textContent = `Hover a card for the winning ticket from ${todayLabel}'s 3:00 PM draw.`;
+    grid.innerHTML = TICKETS.map(winner => resultCard(winner, 'Today · 3:00 PM', winningNumbers[winner.id])).join('');
+  }
+
+  renderResults();
+  // Numbers can be announced from the CRM after this page has already
+  // loaded — poll so they show up here without a manual refresh.
+  setInterval(() => { if (resultsReady || new Date() >= todaysDrawTime) renderResults(); }, 20000);
+
+  // =========================================================
+  // PAST DAY RESULT — winning numbers from yesterday's draw_date.
+  // =========================================================
+  const last24Grid = document.getElementById('last24-grid');
+  const last24Sub = document.getElementById('last24-sub');
+  const last24Date = document.getElementById('last24-date');
+
+  async function renderPastDay(){
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayLabel = yesterday.toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' });
+    const winningNumbers = await RF.getWinningNumbers(isoDate(yesterday));
+    const announced = TICKETS.filter(t => winningNumbers[t.id]);
+
+    if (announced.length === 0) {
+      last24Sub.textContent = 'No numbers were announced in the past day.';
+      last24Date.textContent = '';
+      last24Grid.innerHTML = `
+        <div class="empty-state" style="grid-column:1/-1;">
+          <span class="suit">♦</span>
+          <h3>Nothing yet</h3>
+          <p>Check back once the next draw closes.</p>
+        </div>
+      `;
+      return;
+    }
+
+    last24Date.textContent = yesterdayLabel;
+    last24Sub.textContent = `${announced.length} winning number${announced.length > 1 ? 's' : ''} from ${yesterdayLabel}'s 3:00 PM draw.`;
+    last24Grid.innerHTML = announced.map(winner => resultCard(winner, 'Yesterday · 3:00 PM', winningNumbers[winner.id])).join('');
+  }
+
+  renderPastDay();
+
+  // ---- Redeem Ticket section ----
+  function renderRedeemState(){
+    const loggedIn = !!RF.getUser();
+    document.getElementById('redeem-logged-in').style.display = loggedIn ? 'block' : 'none';
+    document.getElementById('redeem-guest').style.display = loggedIn ? 'none' : 'block';
+  }
+  renderRedeemState();
+  document.addEventListener('rf:authchange', renderRedeemState);
+
+  document.getElementById('redeem-btn')?.addEventListener('click', ()=>{
+    const input = document.getElementById('redeem-code');
+    if (RF.redeemTicket(input.value)) input.value = '';
+  });
+  document.getElementById('redeem-code')?.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') document.getElementById('redeem-btn').click();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <g fill="#2a2a30" stroke="#cda349" stroke-width="2" stroke-linejoin="round">
+    <path d="M70 130 Q90 70 150 65 Q170 45 210 55 Q195 65 195 75 Q225 75 235 95 Q210 90 200 100 Q230 110 225 135 Q205 118 185 122 Q205 140 195 160 Q175 140 160 135 Q145 150 120 145 Q135 130 130 115 Q100 125 70 130 Z"/>
+  </g>
+  <circle cx="205" cy="70" r="4" fill="#e9c976"/>
+  <text x="150" y="185" text-anchor="middle" font-family="monospace" font-size="18" fill="#cda349">BLACK DRAGON</text>
+</svg>

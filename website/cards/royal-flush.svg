@@ -1,0 +1,7 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <path d="M105 55 L118 30 L135 50 L150 22 L165 50 L182 30 L195 55 L188 70 L112 70 Z" fill="#e9c976" stroke="#cda349" stroke-width="1.5"/>
+  <circle cx="150" cy="22" r="5" fill="#e8283f"/>
+  <text x="150" y="115" text-anchor="middle" font-family="monospace" font-size="16" fill="#e9c976">A K Q J 10</text>
+  <text x="150" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#e9c976">ROYAL FLUSH</text>
+</svg>

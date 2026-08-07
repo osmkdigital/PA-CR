@@ -1,0 +1,5 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <path d="M115 55 L125 30 L140 50 L150 25 L160 50 L175 30 L185 55 Z" fill="#cda349"/>
+  <text x="150" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="105" font-weight="bold" fill="#e9c976">K</text>
+</svg>

@@ -1,0 +1,6 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <rect x="110" y="40" width="80" height="110" rx="10" fill="none" stroke="#cda349" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="150" y="125" text-anchor="middle" font-family="Georgia, serif" font-size="70" font-weight="bold" fill="#e9c976">?</text>
+  <text x="150" y="180" text-anchor="middle" font-family="monospace" font-size="16" fill="#cda349">X CARD · RANDOM</text>
+</svg>

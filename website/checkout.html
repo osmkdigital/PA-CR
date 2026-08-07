@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Royal Flush</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="sidebar-scrim"></div>
+<div class="app-shell">
+
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <a href="index.html" class="brand-link">
+        <img src="logo.png" alt="Royal Flush logo" class="brand-logo">
+        <div class="name">Royal Flush<span>LOTTERY &amp; GAMES</span></div>
+      </a>
+      <button class="sidebar-close js-sidebar-close">✕</button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html"><span class="ic">♠</span> Home</a>
+      <a href="tickets.html"><span class="ic">♥</span> Tickets</a>
+      <a href="draw.html"><span class="ic">♣</span> Draw</a>
+      <a href="royalflush.html"><span class="ic">♦</span> Royal Flush</a>
+      <a href="profile.html"><span class="ic">☺</span> My Profile</a>
+      <a href="admin.html" class="js-admin-nav-link" style="display:none;"><span class="ic">⚙</span> Admin</a>
+    </nav>
+    <div class="sidebar-foot">NEXT DRAW <b>DAILY · 3:00 PM</b><br>Play responsibly. 18+</div>
+  </aside>
+
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle js-sidebar-open">☰</button>
+        <span class="page-tag">Checkout</span>
+      </div>
+      <div class="topbar-right">
+        <a href="cart.html" class="icon-btn" title="Cart">
+          <svg class="bag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8h12l-1.1 12.2a1.5 1.5 0 0 1-1.5 1.3H8.6a1.5 1.5 0 0 1-1.5-1.3L6 8z"/>
+            <path d="M9 8V6.5a3 3 0 0 1 6 0V8"/>
+          </svg>
+          <span class="badge js-cart-badge">0</span>
+        </a>
+        <div class="wrap-relative">
+          <button class="auth-btn js-auth-btn js-auth-open is-guest"><span class="avatar">♣</span><span class="au-label">Login / Sign Up</span></button>
+          <div class="profile-pop js-profile-pop"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content" style="max-width:960px;">
+
+      <div class="steps-row">
+        <div class="step done">1 · BAG</div>
+        <div class="step active">2 · PAY WITH CRYPTO</div>
+        <div class="step">3 · CONFIRMED</div>
+      </div>
+
+      <div id="checkout-wrap" class="checkout-layout">
+
+        <div id="pay-panel">
+          <span class="eyebrow">Pay With Crypto</span>
+          <h2 style="font-size:1.6rem;" id="pay-heading">Send USDT to complete your order</h2>
+
+          <div class="pay-toggle" id="pay-toggle">
+            <button type="button" class="pay-opt active" data-asset="USDT">
+              <span class="dot usdt"></span> USDT
+            </button>
+            <button type="button" class="pay-opt" data-asset="USDC">
+              <span class="dot usdc"></span> USDC
+            </button>
+          </div>
+
+          <div class="pay-method">
+            <div class="ic" id="pay-ic">USDT</div>
+            <div><b id="pay-name">Tether (USDT) — BEP-20</b><span>Network: BNB Smart Chain · Confirmations required: 3</span></div>
+          </div>
+
+          <div class="qr-box">
+            <img id="qr-img" src="USDTT.JPG" alt="USDT deposit address QR code" width="150" height="150">
+          </div>
+
+          <label style="font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);letter-spacing:.08em;">DEPOSIT ADDRESS</label>
+          <div class="addr-copy">
+            <span id="wallet-addr">0xF3218075c0edE6BC9aA4670ec9C3B06525b9b125</span>
+            <button id="copy-btn" type="button">COPY</button>
+          </div>
+          <p style="font-size:.78rem;margin-top:14px;">Send the exact total shown to the right. Once your transfer confirms on-chain, paste the transaction hash below and confirm — your tickets lock into today's draw immediately.</p>
+
+          <div class="field" style="margin-top:20px;">
+            <label>Transaction Hash</label>
+            <input type="text" id="tx-hash" placeholder="0x… paste your USDT transfer hash">
+          </div>
+          <button class="btn btn-primary btn-block" id="confirm-pay">Confirm Payment</button>
+          <p class="form-note">Demo checkout — no real transfer is required or sent. Any hash confirms the simulated order.</p>
+        </div>
+
+        <div class="summary-box">
+          <h4 style="color:#fff;">Order Total</h4>
+          <div id="checkout-lines"></div>
+          <div class="summary-row total"><span>Total Due</span><b id="checkout-total-usdt"><span id="total-amount">0.00</span> <span id="total-asset">USDT</span></b></div>
+          <div class="summary-row"><span></span><span id="checkout-total-usd" style="color:var(--ink-faint);"></span></div>
+        </div>
+      </div>
+
+      <!-- SUCCESS STATE -->
+      <div id="success-panel" style="display:none;text-align:center;padding:60px 20px;">
+        <div class="suit red" style="font-size:3.4rem;">♦</div>
+        <h2 style="font-size:2rem;color:#fff;">Payment confirmed</h2>
+        <p style="max-width:420px;margin:0 auto 10px;">Your tickets are locked into today's 3:00 PM draw. Good luck — check your profile for the updated ticket count.</p>
+        <div id="new-codes-wrap" style="max-width:420px;margin:0 auto 26px;display:none;">
+          <label style="font-family:var(--font-mono);font-size:.7rem;color:var(--ink-faint);letter-spacing:.08em;">YOUR TICKET NUMBERS</label>
+          <div id="new-codes" style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;"></div>
+        </div>
+        <a href="profile.html" class="btn btn-primary">View My Tickets</a>
+        <a href="index.html" class="btn btn-ghost" style="margin-left:10px;">Back Home</a>
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html" class="fb-mark">
+              <img src="logo.png" alt="Royal Flush logo" class="footer-logo">
+              <span>Royal Flush</span>
+            </a>
+            <p>A daily-draw lottery table with transparent odds, live results, and USDT/USDC payouts. Play the hand, not the house.</p>
+            <div class="footer-social">
+              <a href="https://x.com/royalflush2050?s=11" target="_blank" aria-label="X / Twitter" title="X / Twitter">
+                <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2zm-1.2 18h1.9L7.4 4H5.4l12.3 16z"/></svg>
+              </a>
+              <a href="https://t.me/royalflush2050 " target="_blank" aria-label="Telegram" title="Telegram">
+                <svg viewBox="0 0 24 24"><path d="M21.8 4.2 2.7 11.6c-1.3.5-1.3 1.2-.2 1.6l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.8-.5l2.3-2.2 4.8 3.5c.9.5 1.5.2 1.7-.8l3.1-14.6c.3-1.3-.5-1.9-1-1.5zM8.8 14.4l9.5-6c.4-.3.8-.1.5.2l-8 7.3-.3 3.1-1.4-4.6z"/></svg>
+              </a>
+              <a href="#" aria-label="Discord" title="Discord">
+                <svg viewBox="0 0 24 24"><path d="M20.3 5.4A17.6 17.6 0 0 0 15.9 4l-.3.5c1.7.4 2.6 1 3.5 1.7-1.5-.7-3-1.3-5.1-1.3s-3.6.6-5.1 1.3c.9-.7 1.9-1.4 3.5-1.7L12.1 4a17.6 17.6 0 0 0-4.4 1.4C4.9 9.1 4 12.7 4.3 16.2a17.7 17.7 0 0 0 5.1 2.5l.7-1.1c-.8-.3-1.6-.7-2.3-1.2l.5-.4c2.9 1.3 6 1.3 8.9 0l.5.4c-.7.5-1.5.9-2.3 1.2l.7 1.1a17.7 17.7 0 0 0 5.1-2.5c.4-4-.6-7.5-1.9-10.8zM9.7 14.1c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7zm4.6 0c-.8 0-1.5-.8-1.5-1.7s.7-1.7 1.5-1.7 1.5.8 1.5 1.7-.7 1.7-1.5 1.7z"/></svg>
+              </a>
+              <a href="#" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.2c2.7 0 3 0 4 .1 1 0 1.7.2 2.1.4.5.2.9.5 1.3.9.4.4.7.8.9 1.3.2.4.4 1.1.4 2.1.1 1 .1 1.3.1 4s0 3-.1 4c0 1-.2 1.7-.4 2.1-.2.5-.5.9-.9 1.3-.4.4-.8.7-1.3.9-.4.2-1.1.4-2.1.4-1 .1-1.3.1-4 .1s-3 0-4-.1c-1 0-1.7-.2-2.1-.4-.5-.2-.9-.5-1.3-.9-.4-.4-.7-.8-.9-1.3-.2-.4-.4-1.1-.4-2.1-.1-1-.1-1.3-.1-4s0-3 .1-4c0-1 .2-1.7.4-2.1.2-.5.5-.9.9-1.3.4-.4.8-.7 1.3-.9.4-.2 1.1-.4 2.1-.4 1-.1 1.3-.1 4-.1zm0 1.8c-2.6 0-2.9 0-4 .1-.8 0-1.2.2-1.5.3-.4.1-.6.3-.9.6-.3.3-.4.5-.6.9-.1.3-.3.7-.3 1.5-.1 1.1-.1 1.4-.1 4s0 2.9.1 4c0 .8.2 1.2.3 1.5.1.4.3.6.6.9.3.3.5.4.9.6.3.1.7.3 1.5.3 1.1.1 1.4.1 4 .1s2.9 0 4-.1c.8 0 1.2-.2 1.5-.3.4-.1.6-.3.9-.6.3-.3.4-.5.6-.9.1-.3.3-.7.3-1.5.1-1.1.1-1.4.1-4s0-2.9-.1-4c0-.8-.2-1.2-.3-1.5-.1-.4-.3-.6-.6-.9-.3-.3-.5-.4-.9-.6-.3-.1-.7-.3-1.5-.3-1.1-.1-1.4-.1-4-.1zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.7-2a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+              </a>
+              <a href="#" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M22 12s0-3.1-.4-4.6a3 3 0 0 0-2.1-2.1C17.9 5 12 5 12 5s-5.9 0-7.5.3A3 3 0 0 0 2.4 7.4C2 8.9 2 12 2 12s0 3.1.4 4.6a3 3 0 0 0 2.1 2.1C6.1 19 12 19 12 19s5.9 0 7.5-.3a3 3 0 0 0 2.1-2.1c.4-1.5.4-4.6.4-4.6zM9.9 15.3V8.7l6 3.3-6 3.3z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="footer-cols">
+            <div class="footer-col">
+              <b>Play</b>
+              <a href="index.html">Home</a>
+              <a href="tickets.html">Tickets</a>
+              <a href="draw.html">Today's Draw</a>
+              <a href="royalflush.html">Royal Flush Coin</a>
+              <a href="cart.html">Your Bag</a>
+              <a href="checkout.html">Checkout</a>
+            </div>
+            <div class="footer-col">
+              <b>Support</b>
+              <a href="help-center.html">Help Center</a>
+              <a href="faqs.html">FAQs</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="live-chat.html">Live Chat</a>
+              <a href="report-issue.html">Report an Issue</a>
+              <a href="responsible-play.html">Responsible Play</a>
+            </div>
+            <div class="footer-col">
+              <b>Company</b>
+              <a href="about.html">About Us</a>
+              <a href="how-it-works.html">How It Works</a>
+              <a href="careers.html">Careers</a>
+              <a href="press.html">Press &amp; Media</a>
+              <a href="blog.html">Blog</a>
+              <a href="affiliates.html">Affiliate Program</a>
+            </div>
+            <div class="footer-col">
+              <b>Legal</b>
+              <a href="terms.html">Terms of Service</a>
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="cookies.html">Cookie Policy</a>
+              <a href="aml.html">AML Policy</a>
+              <a href="refunds.html">Refund Policy</a>
+              <a href="age-verification.html">Age Verification</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="footer-disclaimer">Royal Flush is a demo storefront. All draws, balances, token figures, and payments shown here are simulated for design purposes. 18+ only where lottery-style games are legal. Nothing on this site is financial advice.</p>
+
+        <div class="footer-bottom">
+          <p>&copy; Royal Flush 2026. All rights reserved.</p>
+          <div class="legal-links">
+            <a href="terms.html">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="cookies.html">Cookies</a>
+            <a href="sitemap.html">Sitemap</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- AUTH MODAL -->
+<div class="modal-overlay" id="auth-modal">
+  <div class="modal-box">
+    <button class="close-x js-modal-close">✕</button>
+    <div class="modal-tabs js-modal-tabs">
+      <button class="active" data-tab="login">Login</button>
+      <button data-tab="signup">Sign Up</button>
+    </div>
+    <div class="auth-panel" data-panel="login" style="display:block;">
+      <form id="login-form">
+        <div class="field"><label>Email</label><input type="email" id="login-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="login-password" required placeholder="••••••••"></div>
+        <button class="btn btn-primary btn-block" type="submit">Enter the Table</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-forgot-link">Forgot password?</a></p>
+    </div>
+    <div class="auth-panel" data-panel="signup" style="display:none;">
+      <form id="signup-form">
+        <div class="field"><label>Full Name</label><input type="text" id="signup-name" required placeholder="Alex Rivera"></div>
+        <div class="field"><label>Date of Birth</label><input type="date" id="signup-dob" required></div>
+        <div class="field"><label>Email</label><input type="email" id="signup-email" required placeholder="you@email.com"></div>
+        <div class="field"><label>Password</label><input type="password" id="signup-password" required placeholder="Create a password" minlength="6"></div>
+        <label class="check-field">
+          <input type="checkbox" id="signup-age-confirm" required>
+          <span>I confirm I am 18 years of age or older and eligible to play lottery-style games in my region.</span>
+        </label>
+        <p class="form-error" id="signup-error">You must be 18 or older to create an account.</p>
+        <button class="btn btn-gold btn-block" type="submit">Create Account</button>
+      </form>
+      <p class="form-note">By joining you confirm you meet the legal age for lottery-style games in your region.</p>
+    </div>
+    <div class="auth-panel" data-panel="forgot" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Enter your account email and we'll send you a link to reset your password.</p>
+      <form id="forgot-form">
+        <div class="field"><label>Email</label><input type="email" id="forgot-email" required placeholder="you@email.com"></div>
+        <button class="btn btn-primary btn-block" type="submit">Send Reset Link</button>
+      </form>
+      <p class="form-note"><a href="#" class="js-back-to-login">Back to login</a></p>
+    </div>
+    <div class="auth-panel" data-panel="reset" style="display:none;">
+      <p class="form-note" style="margin-top:0;">Choose a new password for your account.</p>
+      <form id="reset-password-form">
+        <div class="field"><label>New Password</label><input type="password" id="reset-new-password" required placeholder="New password" minlength="6"></div>
+        <button class="btn btn-primary btn-block" type="submit">Update Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="script.js"></script>
+<script>
+  const cart = RF.getCart();
+  if(cart.length === 0){
+    document.getElementById('checkout-wrap').innerHTML = `
+      <div class="empty-state" style="grid-column:1/-1;">
+        <span class="suit">♠</span>
+        <h3>Nothing to check out yet</h3>
+        <p>Add a ticket to your bag first.</p>
+        <a href="tickets.html" class="btn btn-primary">Browse Tickets</a>
+      </div>`;
+  } else {
+    const lines = document.getElementById('checkout-lines');
+    lines.innerHTML = cart.map(c => `
+      <div class="summary-row"><span>${c.qty} × ${c.name}</span><span>$${(c.qty*c.price).toFixed(2)}</span></div>
+    `).join('');
+    const total = RF.cartTotal();
+    document.getElementById('total-amount').textContent = total.toFixed(2);
+    document.getElementById('checkout-total-usd').textContent = '≈ ' + RF.fmtUSD(total) + ' (1 unit ≈ $1.00)';
+  }
+
+  // ---- USDT / USDC payment method toggle ----
+  const ASSETS = {
+    USDT: {
+      label: 'Tether (USDT) — BEP-20',
+      icon: 'USDT',
+      iconClass: 'usdt',
+      address: '0xF3218075c0edE6BC9aA4670ec9C3B06525b9b125',
+      confirmations: 3,
+      qr: 'USDTT.JPG'
+    },
+    USDC: {
+      label: 'USD Coin (USDC) — BEP-20',
+      icon: 'USDC',
+      iconClass: 'usdc',
+      address: '0xF3218075c0edE6BC9aA4670ec9C3B06525b9b125',
+      confirmations: 5,
+      qr: 'USDC.JPG'
+    }
+  };
+
+  function setAsset(asset){
+    const a = ASSETS[asset];
+    document.getElementById('pay-heading').textContent = `Send ${asset} to complete your order`;
+    document.getElementById('pay-name').textContent = a.label;
+    const ic = document.getElementById('pay-ic');
+    ic.textContent = a.icon;
+    ic.classList.toggle('usdc', asset === 'USDC');
+    document.querySelector('.pay-method span').textContent = `Network: BNB Smart Chain · Confirmations required: ${a.confirmations}`;
+    document.getElementById('wallet-addr').textContent = a.address;
+    const qrImg = document.getElementById('qr-img');
+    if (qrImg) { qrImg.src = a.qr; qrImg.alt = `${asset} deposit address QR code`; }
+    document.getElementById('tx-hash').placeholder = `0x… paste your ${asset} transfer hash`;
+    const totalAsset = document.getElementById('total-asset');
+    if (totalAsset) totalAsset.textContent = asset;
+    document.querySelectorAll('.pay-opt').forEach(btn=>{
+      btn.classList.toggle('active', btn.dataset.asset === asset);
+    });
+  }
+
+  document.querySelectorAll('.pay-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=> setAsset(btn.dataset.asset));
+  });
+
+  document.getElementById('copy-btn')?.addEventListener('click', ()=>{
+    const addr = document.getElementById('wallet-addr').textContent;
+    navigator.clipboard?.writeText(addr);
+    RF.toast('Address copied');
+  });
+
+  document.getElementById('confirm-pay')?.addEventListener('click', async ()=>{
+    const hash = document.getElementById('tx-hash').value.trim();
+    if(!hash){ RF.toast('Paste your transaction hash to confirm'); return; }
+    if(!RF.getUser()){ RF.toast('Sign in first so we can credit your profile'); return; }
+
+    const btn = document.getElementById('confirm-pay');
+    btn.disabled = true;
+    btn.textContent = 'Confirming…';
+
+    const cartSnapshot = RF.getCart();
+
+    // Hand out sequential ticket codes (RF001, RF002, ...) and save
+    // one row per ticket. `tickets` is only the rows that actually
+    // made it into the database — `failedCount` is anything that
+    // didn't, so we never show a false "success" or credit the
+    // profile for tickets that don't really exist.
+    const { tickets: createdTickets, failedCount } = await RF.buyTickets(cartSnapshot);
+
+    if (createdTickets.length === 0) {
+      btn.disabled = false;
+      btn.textContent = 'Confirm Payment';
+      RF.toast('Could not save your tickets — please try again or contact support.');
+      return;
+    }
+
+    const actualCount = createdTickets.length;
+    const actualSpent = createdTickets.reduce((sum, t) => sum + Number(t.price), 0);
+    RF.addPurchase(actualCount, actualSpent);
+    RF.clearCart();
+
+    document.getElementById('checkout-wrap').style.display = 'none';
+    document.querySelectorAll('.steps-row .step')[1].classList.add('done');
+    document.querySelectorAll('.steps-row .step')[1].classList.remove('active');
+    document.querySelectorAll('.steps-row .step')[2].classList.add('active');
+
+    const codesWrap = document.getElementById('new-codes-wrap');
+    const codesEl = document.getElementById('new-codes');
+    codesEl.innerHTML = createdTickets.map(t => `<span class="badge-pill">${t.ticket_code}</span>`).join('');
+    codesWrap.style.display = 'block';
+    document.getElementById('success-panel').style.display = 'block';
+
+    if (failedCount > 0) {
+      RF.toast(`${failedCount} ticket${failedCount > 1 ? 's' : ''} could not be saved — contact support with your tx hash.`);
+    }
+  });
+</script>
+</body>
+</html>

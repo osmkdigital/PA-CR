@@ -1,0 +1,6 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <text x="150" y="140" text-anchor="middle" font-family="Georgia, serif" font-size="120" font-weight="bold" fill="#e9c976">Q</text>
+  <text x="40" y="45" font-family="monospace" font-size="26" fill="#e8283f">♥</text>
+  <text x="250" y="175" font-family="monospace" font-size="26" fill="#e8283f" text-anchor="end">♥</text>
+</svg>

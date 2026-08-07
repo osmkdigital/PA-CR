@@ -1,0 +1,6 @@
+<svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="292" height="192" rx="18" fill="#1a1a20" stroke="#cda349" stroke-width="2"/>
+  <rect x="120" y="35" width="60" height="90" rx="8" fill="none" stroke="#cda349" stroke-width="2"/>
+  <text x="150" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="42" font-weight="bold" fill="#e9c976">K</text>
+  <text x="150" y="150" text-anchor="middle" font-family="monospace" font-size="16" fill="#cda349">HIGH CARD</text>
+</svg>
