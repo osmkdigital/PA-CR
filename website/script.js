@@ -190,7 +190,7 @@
      Resolves to { tickets, failedCount } — tickets is the array of
      rows actually saved, failedCount is how many units could not be
      saved (so the caller can warn instead of pretending it worked). */
-  function buyTickets(cartItems) {
+  function buyTickets(cartItems, txHash) {
     var user = getUser();
     if (!user || !supabaseClient) return Promise.resolve({ tickets: [], failedCount: 0 });
 
@@ -212,7 +212,8 @@
               user_id: user.id,
               game_type: gameType,
               ticket_code: res.data,
-              price: item.price
+              price: item.price,
+              tx_hash: txHash || null
             });
           });
         });

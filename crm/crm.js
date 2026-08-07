@@ -260,6 +260,24 @@
     toastTimer = setTimeout(function () { el.classList.remove("show"); }, 2800);
   }
 
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* Renders a client-pasted transaction hash as a truncated mono
+     value (so it fits on mobile without breaking the table) plus a
+     one-tap Copy button that copies the full hash — used to verify
+     payment against the chain without the admin retyping anything. */
+  function txHashCell(hash) {
+    if (!hash) return '<span class="cell-dim">—</span>';
+    var safe = escapeHtml(hash);
+    var short = hash.length > 16 ? escapeHtml(hash.slice(0, 8) + "…" + hash.slice(-6)) : safe;
+    return '<div class="txhash-cell"><span class="mono txhash-val" title="' + safe + '">' + short + '</span>' +
+      '<button type="button" class="txhash-copy" data-hash="' + safe + '" title="Copy full hash">Copy</button></div>';
+  }
+
   function statusPill(status) {
     var label = status.charAt(0).toUpperCase() + status.slice(1);
     return '<span class="status-pill ' + status + '">' + label + "</span>";
@@ -385,7 +403,7 @@
       return matchStatus && matchSearch;
     });
     if (rows.length === 0) {
-      tb.innerHTML = '<tr><td colspan="7" class="cell-dim" style="text-align:center;padding:30px;">No orders match that search.</td></tr>';
+      tb.innerHTML = '<tr><td colspan="8" class="cell-dim" style="text-align:center;padding:30px;">No orders match that search.</td></tr>';
       return;
     }
     rows.forEach(function (t) {
@@ -395,7 +413,8 @@
       var when = new Date(t.purchased_at).toLocaleString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" });
       var tr = document.createElement("tr");
       tr.innerHTML = "<td class=\"mono cell-strong\">" + t.ticket_code + "</td><td>" + buyer + "</td><td>" + game.name + "</td>" +
-        "<td class=\"mono\">" + fmt$(t.price) + "</td><td>" + statusPill(status) + "</td><td class=\"cell-dim\">" + when + "</td>" +
+        "<td class=\"mono\">" + fmt$(t.price) + "</td><td>" + txHashCell(t.tx_hash) + "</td>" +
+        "<td>" + statusPill(status) + "</td><td class=\"cell-dim\">" + when + "</td>" +
         '<td><div class="row-actions">' +
         (status !== "paid" ? '<button data-act="paid">Mark Paid</button>' : "") +
         (status !== "refunded" ? '<button data-act="refunded" class="danger">Refund</button>' : "") +
@@ -411,6 +430,14 @@
           toast("Order " + t.ticket_code + " updated to " + t.status + ".");
         });
       });
+      var copyBtn = tr.querySelector(".txhash-copy");
+      if (copyBtn) {
+        copyBtn.addEventListener("click", function () {
+          var hash = copyBtn.dataset.hash;
+          navigator.clipboard?.writeText(hash);
+          toast("Transaction hash copied");
+        });
+      }
       tb.appendChild(tr);
     });
   }

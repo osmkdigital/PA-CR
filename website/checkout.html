@@ -341,7 +341,7 @@
     // made it into the database — `failedCount` is anything that
     // didn't, so we never show a false "success" or credit the
     // profile for tickets that don't really exist.
-    const { tickets: createdTickets, failedCount } = await RF.buyTickets(cartSnapshot);
+    const { tickets: createdTickets, failedCount } = await RF.buyTickets(cartSnapshot, hash);
 
     if (createdTickets.length === 0) {
       btn.disabled = false;
