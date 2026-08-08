@@ -460,6 +460,106 @@
     if (scrim) scrim.addEventListener("click", close);
   }
 
+  /* ---------------- mobile bottom nav ----------------
+     Injects a fixed 5-tab bottom nav (Home, Tickets, Draw, My
+     Profile, Royal Flush) on every page that loads script.js — no
+     per-page HTML edits needed. Hidden above the mobile breakpoint,
+     where the sidebar already handles navigation. */
+  function initBottomNav() {
+    if (document.querySelector(".rf-bottom-nav")) return;
+
+    var style = document.createElement("style");
+    style.id = "rf-bottom-nav-style";
+    style.textContent =
+      ".rf-bottom-nav{display:none;}" +
+      "@media (max-width:860px){" +
+      "  body{padding-bottom:calc(96px + env(safe-area-inset-bottom));}" +
+      "  .rf-bottom-nav{" +
+      "    display:flex; position:fixed; left:12px; right:12px; bottom:calc(12px + env(safe-area-inset-bottom)); z-index:1000;" +
+      "    padding:8px 6px;" +
+      "    border-radius:26px;" +
+      "    background:rgba(11,15,22,.94); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);" +
+      "    border:1px solid var(--border-soft, rgba(233,201,118,.18));" +
+      "    box-shadow:0 12px 32px rgba(0,0,0,.5), 0 0 0 1px rgba(233,201,118,.06) inset;" +
+      "  }" +
+      "}" +
+      ".rf-bn-item{" +
+      "  flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;" +
+      "  padding:8px 3px; margin:0 2px; border-radius:14px; color:var(--ink-faint,#8a8578); text-decoration:none;" +
+      "  font-family:var(--font-mono,monospace); font-size:.64rem; letter-spacing:.03em; text-transform:uppercase;" +
+      "  font-weight:600; transition:color .15s ease, transform .15s ease, background .15s ease;" +
+      "  border:1px solid transparent;" +
+      "}" +
+      ".rf-bn-item .rf-bn-ic{" +
+      "  font-family:var(--font-mono,monospace); font-size:1.45rem; line-height:1; color:inherit;" +
+      "  transition:text-shadow .15s ease;" +
+      "}" +
+      ".rf-bn-item.active{" +
+      "  color:var(--gold-bright,var(--gold,#e9c976)); transform:translateY(-3px);" +
+      "  background:linear-gradient(180deg, rgba(233,201,118,.16), rgba(178,42,42,.10));" +
+      "  border-color:rgba(233,201,118,.35);" +
+      "  box-shadow:0 4px 16px rgba(233,201,118,.18), 0 0 0 1px rgba(233,201,118,.08) inset;" +
+      "}" +
+      ".rf-bn-item.active .rf-bn-ic{ text-shadow:0 0 16px rgba(233,201,118,.7); }" +
+      ".rf-bn-item:active{ transform:scale(.94); }" +
+      ".rf-bn-item.active .rf-bn-ic{" +
+      "  position:relative; display:inline-block; overflow:hidden;" +
+      "  background:linear-gradient(100deg, var(--gold-bright,#f2d488) 30%, #fff 50%, var(--gold-bright,#f2d488) 70%);" +
+      "  background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;" +
+      "  animation:rfShine 2.2s ease-in-out infinite;" +
+      "}" +
+      "@keyframes rfShine{" +
+      "  0%{ background-position:140% 0; }" +
+      "  60%{ background-position:-40% 0; }" +
+      "  100%{ background-position:-40% 0; }" +
+      "}" +
+      ".rf-bn-rf .rf-bn-ic{" +
+      "  width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;" +
+      "  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.10), rgba(11,15,22,.92));" +
+      "  border:1.5px solid rgba(233,201,118,.4);" +
+      "  box-shadow:0 2px 12px rgba(233,201,118,.22); position:relative; overflow:hidden;" +
+      "}" +
+      ".rf-bn-rf .rf-bn-ic img{ width:66%; height:66%; object-fit:contain; display:block; }" +
+      ".rf-bn-rf.active .rf-bn-ic{" +
+      "  display:flex; align-items:center; justify-content:center;" +
+      "  border-color:var(--gold-bright,#f2d488);" +
+      "  box-shadow:0 3px 20px rgba(233,201,118,.8); transform:scale(1.08);" +
+      "  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), rgba(11,15,22,.92));" +
+      "  -webkit-background-clip:border-box; background-clip:border-box; color:inherit;" +
+      "}" +
+      ".rf-bn-rf.active .rf-bn-ic::after{" +
+      "  content:''; position:absolute; top:0; left:-60%; width:40%; height:100%;" +
+      "  background:linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent);" +
+      "  animation:rfShineSweep 2.2s ease-in-out infinite;" +
+      "}" +
+      "@keyframes rfShineSweep{" +
+      "  0%{ left:-60%; }" +
+      "  60%{ left:120%; }" +
+      "  100%{ left:120%; }" +
+      "}" +
+      ".rf-bn-rf:not(.active) .rf-bn-ic{ filter:grayscale(.25) brightness(.9); }" +
+      ".rf-bn-rf:not(.active) .rf-bn-ic img{ opacity:.85; }";
+    document.head.appendChild(style);
+
+    var current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    var tabs = [
+      { href: "index.html", label: "Home", icon: "♠" },
+      { href: "tickets.html", label: "Tickets", icon: "♥" },
+      { href: "draw.html", label: "Draw", icon: "♣" },
+      { href: "profile.html", label: "My Profile", icon: "☺" },
+      { href: "royalflush.html", label: "Royal Flush", icon: '<img src="logo.png" alt="Royal Flush">', rf: true }
+    ];
+
+    var nav = document.createElement("nav");
+    nav.className = "rf-bottom-nav";
+    nav.innerHTML = tabs.map(function (t) {
+      var isActive = current === t.href || (t.href === "index.html" && current === "");
+      return '<a class="rf-bn-item' + (t.rf ? " rf-bn-rf" : "") + (isActive ? " active" : "") + '" href="' + t.href + '">' +
+        '<span class="rf-bn-ic">' + t.icon + '</span><span>' + t.label + '</span></a>';
+    }).join("");
+    document.body.appendChild(nav);
+  }
+
   /* ---------------- Supabase session wiring ---------------- */
   function initSupabaseAuth() {
     if (!supabaseClient) return;
@@ -731,6 +831,7 @@
     initAuthModal();
     initSupabaseAuth();
     initSliders();
+    initBottomNav();
   });
 
   /* ---------------- public API ---------------- */
