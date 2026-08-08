@@ -541,19 +541,26 @@
       ".rf-bn-rf:not(.active) .rf-bn-ic img{ opacity:.85; }";
     document.head.appendChild(style);
 
-    var current = (location.pathname.split("/").pop() || "index.html").toLowerCase();
+    // Normalize against every URL shape a static host might serve:
+    // "/tickets.html", "/tickets", "/tickets/", or "/" for the home page.
+    // Comparing raw filenames breaks the moment Cloudflare (or any host)
+    // serves clean URLs without the .html extension.
+    var rawPath = location.pathname.replace(/\/+$/, "");
+    var lastSeg = rawPath.split("/").pop() || "";
+    var current = lastSeg.replace(/\.html$/i, "").toLowerCase() || "index";
+
     var tabs = [
-      { href: "index.html", label: "Home", icon: "♠" },
-      { href: "tickets.html", label: "Tickets", icon: "♥" },
-      { href: "draw.html", label: "Draw", icon: "♣" },
-      { href: "profile.html", label: "My Profile", icon: "☺" },
-      { href: "royalflush.html", label: "Royal Flush", icon: '<img src="logo.png" alt="Royal Flush">', rf: true }
+      { href: "index.html", match: "index", label: "Home", icon: "♠" },
+      { href: "tickets.html", match: "tickets", label: "Tickets", icon: "♥" },
+      { href: "draw.html", match: "draw", label: "Draw", icon: "♣" },
+      { href: "profile.html", match: "profile", label: "My Profile", icon: "☺" },
+      { href: "royalflush.html", match: "royalflush", label: "Royal Flush", icon: '<img src="logo.png" alt="Royal Flush">', rf: true }
     ];
 
     var nav = document.createElement("nav");
     nav.className = "rf-bottom-nav";
     nav.innerHTML = tabs.map(function (t) {
-      var isActive = current === t.href || (t.href === "index.html" && current === "");
+      var isActive = current === t.match;
       return '<a class="rf-bn-item' + (t.rf ? " rf-bn-rf" : "") + (isActive ? " active" : "") + '" href="' + t.href + '">' +
         '<span class="rf-bn-ic">' + t.icon + '</span><span>' + t.label + '</span></a>';
     }).join("");
